@@ -1,48 +1,51 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+local packer = require('packer')
 
+local function intstall_plugins(use)
+	-- Packer can manage itself
+	use {
+        'wbthomason/packer.nvim'
+    }
+
+    -- telescope
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
+    -- tree sitter
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
+		run = ':TSUpdate',
+		'nvim-treesitter/playground',
+        "nvim-treesitter/nvim-treesitter-context",
 	}
 
-	use {
-		'nvim-treesitter/playground'
-	}
-
-    use {
-        "nvim-treesitter/nvim-treesitter-context"
-    }
-
+    -- harpoon
 	use {
 		'theprimeagen/harpoon'
 	}
 
+    -- undotree
 	use {
 		'mbbill/undotree'
 	}
 
+    -- git
 	use {
 		'tpope/vim-fugitive'
 	}
 
+    -- lsp
     use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         'neovim/nvim-lspconfig'
     }
 
+    -- cmp
     use {
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
@@ -50,6 +53,7 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
     }
 
+    -- snippets
     use {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
@@ -58,10 +62,19 @@ return require('packer').startup(function(use)
         run = "make install_jsregexp"
     }
 
+    -- lualine
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+
+    -- theme
 	use {
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {},
 	}
-end)
+end
+
+packer.startup(intstall_plugins)

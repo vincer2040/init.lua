@@ -6,7 +6,7 @@ local root_pattern = util.root_pattern("compile_commands.json", "compile_flags.t
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "jsonls" },
+    ensure_installed = { "lua_ls", "jsonls" },
 })
 
 -- lua
@@ -20,7 +20,7 @@ lspconfig.lua_ls.setup {
             },
             diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = {'vim'},
+                globals = { 'vim' },
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
@@ -45,13 +45,13 @@ lspconfig.rust_analyzer.setup {
 -- clangdeez
 lspconfig.clangd.setup {
     capabilities = capabilities,
-    cmd = {"clangd", "--background-index"};
-    filetypes = {"c", "cpp"};
+    cmd = { "clangd", "--background-index" },
+    filetypes = { "c", "cpp" },
     root_dir = function(fname)
         local filename = util.path.is_absolute(fname) and fname
-        or util.path.join(vim.loop.cwd(), fname)
+            or util.path.join(vim.loop.cwd(), fname)
         return root_pattern(filename) or util.path.dirname(filename)
-    end;
+    end,
 };
 
 -- typescript
@@ -85,12 +85,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
         vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-        -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-        -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-        -- vim.keymap.set('n', '<space>wl', function()
-        --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        -- end, opts)
         vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
