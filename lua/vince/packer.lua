@@ -68,6 +68,14 @@ local function intstall_plugins(use)
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
+    -- emmet
+    use {
+        'mattn/emmet-vim',
+        setup = function () -- load stuff before the plugin is loaded
+            vim.g.user_emmet_leader_key='<C-Z>'
+        end
+    }
+
     -- theme
 	use {
 		"folke/tokyonight.nvim",
