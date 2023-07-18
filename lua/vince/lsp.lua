@@ -64,6 +64,7 @@ lspconfig.tsserver.setup {
 
 -- ocaml
 lspconfig.ocamllsp.setup {
+    capabilities = capabilities,
     cmd = { "ocamllsp" },
     filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
     root_pattern = util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
@@ -71,9 +72,27 @@ lspconfig.ocamllsp.setup {
 
 -- gopls
 lspconfig.gopls.setup {
+    capabilities = capabilities,
     cmd = { "/home/vince/go/bin/gopls" },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    single_file_support = true,
+}
+
+-- python
+lspconfig.pyright.setup {
+    capabilities = capabilities,
+}
+
+-- cmake
+lspconfig.cmake.setup {
+    capabilities = capabilities,
+    cmd = { "/home/vince/.local/bin/cmake-language-server" },
+    filetypes = { "cmake" },
+    init_options = {
+        buildDirectory = "build",
+    },
+    root_dir = util.root_pattern('CMakePresets.json', 'CTestConfig.cmake', '.git', 'build', 'cmake'),
     single_file_support = true,
 }
 
