@@ -83,6 +83,10 @@ local function intstall_plugins(use)
 		priority = 1000,
 		opts = {},
 	}
+
+    -- nvim-jdtls
+    use 'mfussenegger/nvim-jdtls'
+
 end
 
 packer.startup(intstall_plugins)

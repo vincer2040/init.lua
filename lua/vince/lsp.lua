@@ -8,7 +8,6 @@ require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = { "lua_ls", "jsonls" },
 })
-
 -- lua
 lspconfig.lua_ls.setup {
     capabilities = capabilities,
