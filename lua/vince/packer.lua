@@ -87,6 +87,9 @@ local function intstall_plugins(use)
     -- nvim-jdtls
     use 'mfussenegger/nvim-jdtls'
 
+    -- lsp-debug-tools
+    use "theprimeagen/lsp-debug-tools.nvim"
+
 end
 
 packer.startup(intstall_plugins)
