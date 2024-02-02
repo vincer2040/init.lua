@@ -16,3 +16,5 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true, noremap = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true, noremap = true })
+
+vim.keymap.set("n", "<leader>ee", "iif err != nil {<CR>}<ESC>O")
