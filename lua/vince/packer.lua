@@ -4,39 +4,39 @@ vim.cmd [[packadd packer.nvim]]
 local packer = require('packer')
 
 local function intstall_plugins(use)
-	-- Packer can manage itself
-	use {
+    -- Packer can manage itself
+    use {
         'wbthomason/packer.nvim'
     }
 
     -- telescope
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
     -- tree sitter
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate',
-		'nvim-treesitter/playground',
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        'nvim-treesitter/playground',
         "nvim-treesitter/nvim-treesitter-context",
-	}
+    }
 
     -- harpoon
-	use {
-		'theprimeagen/harpoon'
-	}
+    use {
+        'theprimeagen/harpoon'
+    }
 
     -- undotree
-	use {
-		'mbbill/undotree'
-	}
+    use {
+        'mbbill/undotree'
+    }
 
     -- git
-	use {
-		'tpope/vim-fugitive'
-	}
+    use {
+        'tpope/vim-fugitive'
+    }
 
     -- lsp
     use {
@@ -71,25 +71,24 @@ local function intstall_plugins(use)
     -- emmet
     use {
         'mattn/emmet-vim',
-        setup = function () -- load stuff before the plugin is loaded
-            vim.g.user_emmet_leader_key='<C-Z>'
+        setup = function()
+            vim.g.user_emmet_leader_key = "<C-Z>"
         end
     }
 
     -- theme
-	use {
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	}
+    use {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    }
 
     -- nvim-jdtls
     use 'mfussenegger/nvim-jdtls'
 
     -- lsp-debug-tools
     use "theprimeagen/lsp-debug-tools.nvim"
-
 end
 
 packer.startup(intstall_plugins)
