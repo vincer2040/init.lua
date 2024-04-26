@@ -8,6 +8,7 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
+        "j-hui/fidget.nvim",
     },
     config = function()
         local lspconfig = require("lspconfig")
@@ -17,6 +18,8 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = { "lua_ls", "jsonls" },
         })
+
+        require("fidget").setup()
 
         lspconfig.lua_ls.setup {
             capabilities = capabilities,
